@@ -26,7 +26,7 @@
 
                     <fieldset>
                         <div class="fieldset-header">
-                            <h5 class="fieldset-title">Dados Individuais</h5>
+                            <h5 class="fieldset-title">Visitante</h5>
                         </div>
                         <div class="fieldset-body">
                             <div class="row">
@@ -103,47 +103,42 @@
                         </div>
                         <button type="button" name="btnProximo2" class="btn btn-success prox acao" value="Proximo">Próximo</button>
                     </fieldset>
+                
                     <fieldset>
                         <div class="fieldset-header">
-                            <h5 class="fieldset-title">Dados Militares</h5>
+                            <h5 class="fieldset-title">Visita</h5>
                         </div>
                         <div class="fieldset-body">
-                            <div class="row">                                
+                            <div class="row">
                                 <div class="form-group col-md-4">
-                                    <label for="txtPGrad">Posto/Graduação: <span class=campo-obrigatorio>*</span></label>
-                                    <select class="form-control" id="txtPGrad" name="txtPGrad">
-                                        <option value="0" selected>Selecione um Posto/Graduação...</option>
-                                        <option value="1">Teste</option>
+                                    <label for="txtDataVisita">Dia: <span class="campo-obrigatorio">*</span></label>
+                                    <input type="date" class="form-control" id="txtDataVisita" name="txtDataVisita" placeholder="Ex.: DD/MM/AAAA">
+                                    <div class="valid-feedback">Selva!</div>
+                                    <div class="invalid-feedback invalid-dataNasc">Campo Obrigatório!</div>
+                                </div>
+                                
+                                <div class="form-group col-md-4">
+                                    <label for="txtHoraVisita">Hora: <span class="campo-obrigatorio">*</span></label>
+                                    <select class="form-control" id="txtHoraVisita" name="txtHoraVisita">
+                                        <option value="0" selected>Selecione o Horário da Visita...</option>
                                     </select>
                                     <div class="valid-feedback">Selva!</div>
                                     <div class="invalid-feedback">Campo Obrigatório!</div>
                                 </div>
+                                
                                 <div class="form-group col-md-4">
-                                    <label for="txtQas">Quadro, Arma ou Serviço: <span class="campo-obrigatorio">*</span></label>
-                                    <select class="form-control" id="txtQas" name="txtQas">
-                                        <option value="0" selected>Selecione uma Arma...</option>
-                                        <option value="1">Teste</option>
+                                    <label for="txtCategoria">Categoria: <span class="campo-obrigatorio">*</span></label>
+                                    <select class="form-control" id="txtCategoria" name="txtCategoria">
+                                        <option value="0" selected>Selecione a sua Categoria...</option>
                                     </select>
                                     <div class="valid-feedback">Selva!</div>
                                     <div class="invalid-feedback">Campo Obrigatório!</div>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="txtCia">Pertence a qual CIA: <span class="campo-obrigatorio">*</span></label>
-                                    <select class="form-control" id="txtCia" name="txtCia">
-                                        <option value="0" selected>Selecione uma companhia...</option>
-                                        <option value="1">COMPANHIA DE COMANDO E SERVIÇO</option>
-                                        <option value="2">COMPANHIA AUXILIAR DE ENSINO</option>
-                                        <option value="3">NENHUMA</option>
-                                    </select>
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback">Campo Obrigatório!</div>
-                                </div>
-                            </div>   
-                            
+                                
+                            </div>
                         </div>
                         <button type="button" name="btnAnterior" class="btn btn-dark anterior acao">Anterior</button>
-                            <!--<button type="button" name="btnProximo9" class="btn btn-danger prox acao" value="Proximo">Próximo</button>-->
-                            <button type="submit" name="btnSalvar" class="btn btn-success acao">Salvar</button>
+                        <button type="submit" name="btnSalvar" class="btn btn-success acao">Salvar</button>
                     </fieldset>
             </form>
         </section>
