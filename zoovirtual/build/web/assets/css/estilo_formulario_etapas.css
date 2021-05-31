@@ -1,0 +1,233 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24/12/2020, 12:23:10
+    Author     : Anderson de Paula Andrade Medeiros
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    height: 100%;
+    /*background: linear-gradient(rgba(38, 128, 101, 0.9), rgba(52, 177, 140, 0.9))*/
+}
+label{
+     font-weight: bold;
+     color: #000000;
+}
+
+#formCadVisita{    
+    margin: 50px auto;
+    /*text-align: center;*/
+    position: relative;
+}
+#formAttVisita{    
+    margin: 50px auto;
+    /*text-align: center;*/
+    position: relative;
+}
+
+#formCadVisita fieldset{
+    background: white;
+    border: 0 none;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    
+    box-shadow: 0 0 15px 1px rgba(0,0,0,0.4);
+    
+    box-sizing: border-box;
+    width: 100%;
+}
+#formAttVisita fieldset{
+    background: white;
+    border: 0 none;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    
+    box-shadow: 0 0 15px 1px rgba(0,0,0,0.4);
+    
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#formCadVisita fieldset:not(:first-of-type){
+    display: none;
+}
+#formAttVisita fieldset:not(:first-of-type){
+    display: none;
+}
+
+#formCadVisita #progress{
+    margin-bottom: 30px;
+    overflow: hidden;
+    text-align: center;
+    counter-reset: step;
+    
+}
+#formAttVisita #progress{
+    margin-bottom: 30px;
+    overflow: hidden;
+    text-align: center;
+    counter-reset: step;
+    
+}
+
+#formCadVisita #progress li{
+    list-style-type: none;
+    color: #125e12;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    float: left;
+    width: 50%;
+    position: relative;
+}
+#formAttVisita #progress li{
+    list-style-type: none;
+    color: #125e12;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    float: left;
+    width: 20.00%;
+    position: relative;
+}
+
+#formCadVisita #progress li:before{
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    display: block;
+    line-height: 30px;
+    background: #dc0000;
+    color: white;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin: 0 auto 10px auto;
+}
+#formAttVisita #progress li:before{
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    display: block;
+    line-height: 30px;
+    background: #dc0000;
+    color: white;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin: 0 auto 10px auto;
+}
+
+#formCadVisita #progress li:after{
+    content: '';
+    width: 100%;
+    background: #dc0000;
+    height: 2px;
+    position: absolute;
+    top: 14px;
+    left: -50%;
+    z-index: -1;
+}
+#formAttVisita #progress li:after{
+    content: '';
+    width: 100%;
+    background: #dc0000;
+    height: 2px;
+    position: absolute;
+    top: 14px;
+    left: -50%;
+    z-index: -1;
+}
+
+#formCadVisita #progress li:first-child:after{
+    content: none;
+}
+#formAttVisita #progress li:first-child:after{
+    content: none;
+}
+
+#formCadVisita #progress li.ativo:before,  #formCadVisita #progress li.ativo:after{
+    background: #125e12;
+    color: white;
+    text-shadow: 0 1px 0;
+}
+#formAttVisita #progress li.ativo:before,  #formAttVisita #progress li.ativo:after{
+    background: #125e12;
+    color: white;
+    text-shadow: 0 1px 0;
+}
+
+
+
+.fieldset-header, .fieldset-footer{
+    text-align: justify;
+    padding: 1rem;
+    color: white;
+    background: #0e490e;
+}
+
+.fieldset-title{
+    margin-bottom: 0;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+.fieldset-body{
+    padding: 1rem;
+}
+
+.fieldset-interno{
+    border-top: 2px solid #125e12;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+.fieldset-dependente{
+    border: none;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.header-interno{
+    background: rgba(14,73,14,0.9);
+    
+}
+
+.title-interno{    
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: justify;
+    font-weight: bold;
+    color: white;
+}
+
+.btn{
+    margin-left: 15px;
+    margin-bottom: 15px;
+    margin-right: 0;
+}
+
+.campo-obrigatorio{
+    font-weight: bold;
+    color: #dc0000;
+}
+
+.colTentC{
+    padding-left: 10px;
+    padding-right: 10px;
+}
