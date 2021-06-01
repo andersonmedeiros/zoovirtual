@@ -15,132 +15,39 @@
         
         <link rel="stylesheet" type="text/css" href="assets/css/estilo_universal.css">
         <link rel="stylesheet" type="text/css" href="assets/css/estilo_formulario_etapas.css">
+        
+        <link rel="stylesheet" type="text/css" href="assets/css/estilo_index.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/floating_labels.css">
     </head>
     <body>
         <section class="container-fluid col-md-10 mr-auto ml-auto area">
-            <form id="formCadVisita" name="formCadVisita" method="post" action="controller.visita/Cadastro">
-                    <ul id="progress">
-                        <li class="ativo">Dados do Visitante</li>
-                        <li>Dados da Visita</li>
-                    </ul>
+            <%
+                if(request.getParameter("e") != null){
+                    int retorno = Integer.parseInt(request.getParameter("e"));
 
-                    <fieldset>
-                        <div class="fieldset-header">
-                            <h5 class="fieldset-title">Visitante</h5>
-                        </div>
-                        <div class="fieldset-body">
-                            <div class="row">
-                                <div class="form-group col-md-6" id="div-nat">
-                                    <label for="txtNaturalidade">Naturalidade: <span class="campo-obrigatorio">*</span></label>
-                                    <select class="form-control" id="txtNaturalidade" name="txtNaturalidade">
-                                        <option value="0" selected>Selecione sua Naturalidade...</option>
-                                        <option value="1">Brasileiro(a)</option>
-                                        <option value="2">Estrangeiro(a)</option>
-                                    </select>
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback">Campo Obrigatório!</div>
-                                </div>
-                                <div class="form-group col-md-6" id="div-cpf" style="display: none;">
-                                    <label for="txtCpf">CPF: <span class="campo-obrigatorio">*</span></label>
-                                    <input type="text" class="form-control cpf" id="txtCpf" name="txtCpf" placeholder="Ex.: 000.000.000-00">
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback invalid-cpf">Campo Obrigatório!</div>
-                                </div>
-                                <div class="form-group col-md-6" id="div-passaporte" style="display: none;">
-                                    <label for="txtPassaporte">Passaporte: <span class="campo-obrigatorio">*</span></label>
-                                    <input type="text" class="form-control" id="txtPassaporte" name="txtPassaporte" placeholder="Ex.: ">
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback">Campo Obrigatório!</div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-4">
-                                    <label for="txtNome">Nome: <span class="campo-obrigatorio">*</span></label>
-                                    <input type="text" class="form-control" id="txtNome" name="txtNome" placeholder="Ex.: Fulano">
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback">Campo Obrigatório!</div>
-                                </div>
-                                <div class="form-group col-md-8">
-                                    <label for="txtSobrenome">Sobrenome: <span class="campo-obrigatorio">*</span></label>
-                                    <input type="text" class="form-control" id="txtSobrenome" name="txtSobrenome" placeholder="Ex.: de Tal">
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback">Campo Obrigatório!</div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="txtSexo">Sexo: <span class="campo-obrigatorio">*</span></label>
-                                    <select class="form-control" id="txtSexo" name="txtSexo">
-                                        <option value="0" selected>Selecione um sexo...</option>
-                                        <option value="M">MASCULINO</option>
-                                        <option value="F">FEMININO</option>
-                                    </select>
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback">Campo Obrigatório!</div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="txtDataNasc">Data de Nascimento: <span class="campo-obrigatorio">*</span></label>
-                                    <input type="date" class="form-control" id="txtDataNasc" name="txtDataNasc" placeholder="Ex.: DD/MM/AAAA">
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback invalid-dataNasc">Campo Obrigatório!</div>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="form-group col-md-8">
-                                    <label for="txtEmail">Email: <span class="campo-obrigatorio">*</span></label>
-                                    <input type="text" class="form-control" id="txtEmail" name="txtEmail" placeholder="Ex.: fulanodetal@gmail.com">
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback invalid-email">Campo Obrigatório!</div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="txtFone">Fone: <span class="campo-obrigatorio">*</span></label>
-                                    <input type="text" class="form-control fone" id="txtFone" name="txtFone" placeholder="Ex.: (00) 00000-0000">
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback invalid-foneCel">Campo Obrigatório!</div>
-                                </div>                           
-                            </div>
-                        </div>
-                        <button type="button" name="btnProximo2" class="btn btn-success prox acao" value="Proximo">Próximo</button>
-                    </fieldset>
+                    if(retorno == 1){
+                        out.println("<div class=\"alert alert-success shadow-sm text-center\" role=\"alert\">");
+                        out.println("       Visitante cadastrado com sucesso!");
+                        out.println("</div>");
+                    }
+                }
+            %>
+            <div class="text-center form form-signin">
+                <div class="col-md-12 mb-1">
+                    <b class="text-center" style="color: #000000; font-size: 15pt;">Bem-vindo ao nosso Sistema de Agendamento de Visitas:</b>
+                </div>
                 
-                    <fieldset>
-                        <div class="fieldset-header">
-                            <h5 class="fieldset-title">Visita</h5>
-                        </div>
-                        <div class="fieldset-body">
-                            <div class="row">
-                                <div class="form-group col-md-4">
-                                    <label for="txtDataVisita">Dia: <span class="campo-obrigatorio">*</span></label>
-                                    <input type="date" class="form-control" id="txtDataVisita" name="txtDataVisita" placeholder="Ex.: DD/MM/AAAA">
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback invalid-dataNasc">Campo Obrigatório!</div>
-                                </div>
-                                
-                                <div class="form-group col-md-4">
-                                    <label for="txtHoraVisita">Hora: <span class="campo-obrigatorio">*</span></label>
-                                    <select class="form-control" id="txtHoraVisita" name="txtHoraVisita">
-                                        <option value="0" selected>Selecione o Horário da Visita...</option>
-                                    </select>
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback">Campo Obrigatório!</div>
-                                </div>
-                                
-                                <div class="form-group col-md-4">
-                                    <label for="txtCategoria">Categoria: <span class="campo-obrigatorio">*</span></label>
-                                    <select class="form-control" id="txtCategoria" name="txtCategoria">
-                                        <option value="0" selected>Selecione a sua Categoria...</option>
-                                    </select>
-                                    <div class="valid-feedback">Selva!</div>
-                                    <div class="invalid-feedback">Campo Obrigatório!</div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <button type="button" name="btnAnterior" class="btn btn-dark anterior acao">Anterior</button>
-                        <button type="submit" name="btnSalvar" class="btn btn-success acao">Salvar</button>
-                    </fieldset>
-            </form>
+                <img class="col-4" src="assets/img/brasaocigs.png" alt="Sistema de Controle de Visitantes" >                                       
+
+                <div class="form-label-group">
+                    <label for="txtPossuiCadastro">Você já possui cadastro?</label>
+                    <button type="button" class="btn btn-primary btn-block btn-dark" onclick="location.href='visita/cadastro.jsp'">Sim</button>
+                    <button type="button" class="btn btn-primary btn-block btn-dark" onclick="location.href='visitante/cadastro.jsp'">Não</button>
+                </div>
+                
+            </div>
+            
+            
         </section>
         
         <script src="assets/node_modules/jquery/dist/jquery.js"></script>
