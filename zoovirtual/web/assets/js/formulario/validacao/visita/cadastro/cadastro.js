@@ -6,12 +6,7 @@ $(document).ready(function(){
     limpaCampoSelect("select[name=txtNaturalidade]");
     limpaCampoInput("input[name=txtCpf]");
     limpaCampoInput("input[name=txtPassaporte]");
-    limpaCampoInput("input[name=txtNome]");
-    limpaCampoInput("input[name=txtSobrenome]");
-    limpaCampoSelect("select[name=txtSexo]");
-    limpaCampoInput("input[name=txtDataNasc]");
-    limpaCampoInput("input[name=txtEmail]");
-    limpaCampoInput("input[name=txtFone]");
+    //limpaCampoInput("input[name=txtNome]");
 // --> Início Etapa 1: DADOS DO VISITANTE
     //Campo Select Naturalidade
     validSelect("select[name=txtNaturalidade]");
@@ -29,52 +24,97 @@ $(document).ready(function(){
     validInput("input[name=txtNome]");
     validInputTReal("input[name=txtNome]");
     
-    //Campo Input Sobrenome
-    validInput("input[name=txtSobrenome]");
-    validInputTReal("input[name=txtSobrenome]");
-    
-    //Campo Select Sexo
-    validSelect("select[name=txtSexo]");
-    validSelectTReal("select[name=txtSexo]");
-    
-    //Campo Select Data Nascimento
-    validDataNasc("input[name=txtDataNasc]")
-    validDataNascTReal("input[name=txtDataNasc]")
-    
-    //Campo Input Email
-    validEmail("input[name=txtEmail]");
-    validEmailTReal("input[name=txtEmail]");
-    
-    //Campo Input Fone
-    validFoneCel("input[name=txtFone");
-    validFoneCelTReal("input[name=txtFone");
-    
 });
 
 
 $(function(){
-    var atual_fs, prox_fs, anterior_fs;
-    
-    function proximo(elemento){
-        atual_fs = $(elemento).parent();
-        prox_fs = $(elemento).parent().next();
+   
 
-        $('#progress li').eq($('fieldset').index(prox_fs)).addClass('ativo');
-        atual_fs.hide(800);
-        prox_fs.show(800);
-    }
-
-    $('.anterior').click(function(){
-        atual_fs = $(this).parent();
-        anterior_fs = $(this).parent().prev();
-        $('#progress li').eq($('fieldset').index(atual_fs)).removeClass('ativo');
-        atual_fs.hide(800);
-        anterior_fs.show(800);
-
-    });
-
-    $('#formCadVisita button[type=button]').click(function(){
+    $('#formCad button[type=button]').click(function(){
        return false; 
+    });
+    
+    $("button[name=btnPesquisar]").click(function(){ 
+        if($("select[name=txtNaturalidade]").val() == '0'){
+            $("select[name=txtNaturalidade]").removeClass("is-valid");
+            $("select[name=txtNaturalidade]").addClass("is-invalid");
+            $("select[name=txtNaturalidade]").focus();
+            return false;
+        }   
+        else if($("select[name=txtNaturalidade]").val() == '1'){
+            var cpf = $("input[name=txtCpf]").val().replace(".","").replace(".","").replace("-","");
+            if(cpf == ''){
+                $("input[name=txtCpf]").removeClass("is-valid");
+                $("input[name=txtCpf]").addClass("is-invalid");
+                $("input[name=txtCpf]").focus();
+                $(".invalid-cpf").html("Campo Obrigatório!");
+                return false;
+            }
+            else if(cpf == '00000000000' || cpf == '11111111111' || cpf == '22222222222' || cpf == '33333333333' ||                 
+                    cpf == '44444444444' || cpf == '55555555555' || cpf == '66666666666' || cpf == '77777777777' ||                 
+                    cpf == '88888888888' || cpf == '99999999999'){
+                $("input[name=txtCpf]").removeClass("is-valid");
+                $("input[name=txtCpf]").addClass("is-invalid");
+                $("input[name=txtCpf]").focus();
+                $(".invalid-cpf").html("CPF Inválido!");
+                return false;
+            }        
+            else if(cpfOk == 0){
+                // Valida 1o digito	
+                var add = 0;	
+                for (var i=0; i < 9; i ++)		
+                    add += parseInt(cpf.charAt(i)) * (10 - i);	
+                var rev = 11 - (add % 11);	
+                if (rev == 10 || rev == 11)		
+                    rev = 0;	
+                if (rev != parseInt(cpf.charAt(9))){
+                    $("input[name=txtCpf]").removeClass("is-valid");
+                    $("input[name=txtCpf]").addClass("is-invalid");
+                    $("input[name=txtCpf]").focus();
+                    $(".invalid-cpf").html("CPF Inválido!");
+                    return false;
+
+                }else{
+                    $("input[name=txtCpf]").removeClass("is-invalid");
+                    $("input[name=txtCpf]").addClass("is-valid");
+                    cpfOk=1;
+                }
+                // Valida 2o digito	
+                add = 0;	
+                for (var i = 0; i < 10; i ++)		
+                    add += parseInt(cpf.charAt(i)) * (11 - i);	
+                rev = 11 - (add % 11);	
+                if (rev == 10 || rev == 11)	
+                    rev = 0;	
+                if (rev != parseInt(cpf.charAt(10))){
+                    $("input[name=txtCpf]").removeClass("is-valid");
+                    $("input[name=txtCpf]").addClass("is-invalid");
+                    $("input[name=txtCpf]").focus();
+                    $(".invalid-cpf").html("CPF Inválido!");
+                    return false;
+
+                }else{
+                    $("input[name=txtCpf]").removeClass("is-invalid");
+                    $("input[name=txtCpf]").addClass("is-valid");
+                    cpfOk=1;
+                }    
+            } 
+            else{
+                getVisitanteByCpf(""+$("input[name=txtCpf]").val().replace(".","").replace(".","").replace("-",""));
+            }
+
+        }
+        else if($("select[name=txtNaturalidade]").val() == '2'){
+            if($("input[name=txtPassaporte]").val() === ''){
+                $("input[name=txtPassaporte]").removeClass("is-valid");
+                $("input[name=txtPassaporte]").addClass("is-invalid");
+                $("input[name=txtPassaporte]").focus();
+                return false;
+            }
+            else{
+                getVisitanteByCpf($("input[name=txtCpf]").val().replace(".","").replace(".","").replace("-",""));
+            }
+        }
     });
     
     // Obrigatoriedade
